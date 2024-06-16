@@ -25,18 +25,12 @@ public class GildedRose(IList<Item> Items)
                 {
                     if (item.SellIn < 11)
                     {
-                        if (item.Quality < 50)
-                        {
-                            item.Quality += 1;
-                        }
+                        IncreaseQuality(item);
                     }
 
                     if (item.SellIn < 6)
                     {
-                        if (item.Quality < 50)
-                        {
-                            item.Quality += 1;
-                        }
+                        IncreaseQuality(item);
                     }
                 }
             }
@@ -67,10 +61,7 @@ public class GildedRose(IList<Item> Items)
         {
             if (item.Name == "Aged Brie")
             {
-                if (item.Quality < 50)
-                {
-                    item.Quality += 1;
-                }
+                IncreaseQuality(item);
             }
             else
             {
@@ -91,6 +82,14 @@ public class GildedRose(IList<Item> Items)
                     }
                 }
             }
+        }
+    }
+
+    private static void IncreaseQuality(Item item)
+    {
+        if (item.Quality < 50)
+        {
+            item.Quality += 1;
         }
     }
 }
