@@ -3,82 +3,88 @@
 // ReSharper disable once CheckNamespace
 namespace GildedRoseKata;
 
+public class LegacyItemWrapper(Item item)
+{
+    public Item Item { get; } = item;
+}
+
 public class GildedRose(IList<Item> Items)
 {
     public void UpdateQuality()
     {
         foreach (var item in Items)
         {
-            UpdateItem(item);
+            LegacyItemWrapper legacyItemWrapper = new(item);
+            UpdateItem(legacyItemWrapper);
         }
     }
 
-    private static void UpdateItem(Item item)
+    private static void UpdateItem(LegacyItemWrapper item)
     {
-        if (item.Name == "Aged Brie")
+        if (item.Item.Name == "Aged Brie")
         {
             IncreaseQuality(item);
 
-            item.SellIn -= 1;
+            item.Item.SellIn -= 1;
 
-            if (item.SellIn < 0)
+            if (item.Item.SellIn < 0)
             {
                 IncreaseQuality(item);
             }
         }
-        else if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+        else if (item.Item.Name == "Backstage passes to a TAFKAL80ETC concert")
         {
-            if (item.Quality < 50)
+            if (item.Item.Quality < 50)
             {
-                item.Quality += 1;
+                item.Item.Quality += 1;
 
-                if (item.SellIn < 11)
+                if (item.Item.SellIn < 11)
                 {
                     IncreaseQuality(item);
                 }
 
-                if (item.SellIn < 6)
+                if (item.Item.SellIn < 6)
                 {
                     IncreaseQuality(item);
                 }
             }
 
-            item.SellIn -= 1;
+            item.Item.SellIn -= 1;
 
-            if (item.SellIn < 0)
+            if (item.Item.SellIn < 0)
             {
-                item.Quality = 0;
+                item.Item.Quality = 0;
             }
         }
-        else if (item.Name == "Sulfuras, Hand of Ragnaros")
+        else if (item.Item.Name == "Sulfuras, Hand of Ragnaros")
         {
         }
         else
         {
             DecreaseQuality(item);
 
-            item.SellIn -= 1;
+            item.Item.SellIn -= 1;
 
-            if (item.SellIn < 0)
+            if (item.Item.SellIn < 0)
             {
                 DecreaseQuality(item);
             }
         }
     }
 
-    private static void DecreaseQuality(Item item)
+    private static void DecreaseQuality(LegacyItemWrapper item)
     {
-        if (item.Quality > 0)
+        if (item.Item.Quality > 0)
         {
-            item.Quality -= 1;
+            item.Item.Quality -= 1;
         }
     }
 
-    private static void IncreaseQuality(Item item)
+    private static void IncreaseQuality(LegacyItemWrapper item)
     {
-        if (item.Quality < 50)
+        if (item.Item.Quality < 50)
         {
-            item.Quality += 1;
+            item.Item.Quality += 1;
         }
     }
 }
