@@ -50,38 +50,23 @@ public class GildedRose(IList<Item> Items)
                 item.Quality = 0;
             }
         }
+        else if (item.Name == "Sulfuras, Hand of Ragnaros")
+        {
+        }
         else
         {
             if (item.Quality > 0)
             {
-                if (item.Name == "Sulfuras, Hand of Ragnaros")
-                {
-                }
-                else
-                {
-                    item.Quality -= 1;
-                }
+                item.Quality -= 1;
             }
 
-            if (item.Name == "Sulfuras, Hand of Ragnaros")
-            {
-            }
-            else
-            {
-                item.SellIn -= 1;
-            }
+            item.SellIn -= 1;
 
             if (item.SellIn < 0)
             {
                 if (item.Quality > 0)
                 {
-                    if (item.Name == "Sulfuras, Hand of Ragnaros")
-                    {
-                    }
-                    else
-                    {
-                        item.Quality -= 1;
-                    }
+                    item.Quality -= 1;
                 }
             }
         }
