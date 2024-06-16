@@ -7,72 +7,72 @@ public class LegacyItemWrapper(Item item)
 {
     public Item Item { get; } = item;
 
-    public static void UpdateItem(LegacyItemWrapper item)
+    public void UpdateItem()
     {
-        if (item.Item.Name == "Aged Brie")
+        if (Item.Name == "Aged Brie")
         {
-            IncreaseQuality(item);
+            IncreaseQuality();
 
-            item.Item.SellIn -= 1;
+            Item.SellIn -= 1;
 
-            if (item.Item.SellIn < 0)
+            if (Item.SellIn < 0)
             {
-                IncreaseQuality(item);
+                IncreaseQuality();
             }
         }
-        else if (item.Item.Name == "Backstage passes to a TAFKAL80ETC concert")
+        else if (Item.Name == "Backstage passes to a TAFKAL80ETC concert")
         {
-            if (item.Item.Quality < 50)
+            if (Item.Quality < 50)
             {
-                item.Item.Quality += 1;
+                Item.Quality += 1;
 
-                if (item.Item.SellIn < 11)
+                if (Item.SellIn < 11)
                 {
-                    IncreaseQuality(item);
+                    IncreaseQuality();
                 }
 
-                if (item.Item.SellIn < 6)
+                if (Item.SellIn < 6)
                 {
-                    IncreaseQuality(item);
+                    IncreaseQuality();
                 }
             }
 
-            item.Item.SellIn -= 1;
+            Item.SellIn -= 1;
 
-            if (item.Item.SellIn < 0)
+            if (Item.SellIn < 0)
             {
-                item.Item.Quality = 0;
+                Item.Quality = 0;
             }
         }
-        else if (item.Item.Name == "Sulfuras, Hand of Ragnaros")
+        else if (Item.Name == "Sulfuras, Hand of Ragnaros")
         {
         }
         else
         {
-            DecreaseQuality(item);
+            DecreaseQuality();
 
-            item.Item.SellIn -= 1;
+            Item.SellIn -= 1;
 
-            if (item.Item.SellIn < 0)
+            if (Item.SellIn < 0)
             {
-                DecreaseQuality(item);
+                DecreaseQuality();
             }
         }
     }
 
-    private static void DecreaseQuality(LegacyItemWrapper item)
+    public void DecreaseQuality()
     {
-        if (item.Item.Quality > 0)
+        if (Item.Quality > 0)
         {
-            item.Item.Quality -= 1;
+            Item.Quality -= 1;
         }
     }
 
-    private static void IncreaseQuality(LegacyItemWrapper item)
+    public void IncreaseQuality()
     {
-        if (item.Item.Quality < 50)
+        if (Item.Quality < 50)
         {
-            item.Item.Quality += 1;
+            Item.Quality += 1;
         }
     }
 }
@@ -84,7 +84,7 @@ public class GildedRose(IList<Item> Items)
         foreach (var item in Items)
         {
             LegacyItemWrapper legacyItemWrapper = new(item);
-            LegacyItemWrapper.UpdateItem(legacyItemWrapper);
+            legacyItemWrapper.UpdateItem();
         }
     }
 }
