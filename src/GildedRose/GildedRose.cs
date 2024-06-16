@@ -17,10 +17,7 @@ public class GildedRose(IList<Item> Items)
     {
         if (item.Name == "Aged Brie")
         {
-            if (item.Quality < 50)
-            {
-                item.Quality += 1;
-            }
+            IncreaseQuality(item);
 
             item.SellIn -= 1;
 
