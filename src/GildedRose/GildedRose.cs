@@ -6,20 +6,8 @@ namespace GildedRoseKata;
 public class LegacyItemWrapper(Item item)
 {
     public Item Item { get; } = item;
-}
 
-public class GildedRose(IList<Item> Items)
-{
-    public void UpdateQuality()
-    {
-        foreach (var item in Items)
-        {
-            LegacyItemWrapper legacyItemWrapper = new(item);
-            UpdateItem(legacyItemWrapper);
-        }
-    }
-
-    private static void UpdateItem(LegacyItemWrapper item)
+    public static void UpdateItem(LegacyItemWrapper item)
     {
         if (item.Item.Name == "Aged Brie")
         {
@@ -85,6 +73,18 @@ public class GildedRose(IList<Item> Items)
         if (item.Item.Quality < 50)
         {
             item.Item.Quality += 1;
+        }
+    }
+}
+
+public class GildedRose(IList<Item> Items)
+{
+    public void UpdateQuality()
+    {
+        foreach (var item in Items)
+        {
+            LegacyItemWrapper legacyItemWrapper = new(item);
+            LegacyItemWrapper.UpdateItem(legacyItemWrapper);
         }
     }
 }
