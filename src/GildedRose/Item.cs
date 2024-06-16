@@ -1,4 +1,5 @@
-﻿namespace GildedRoseKata
+﻿// ReSharper disable once CheckNamespace
+namespace GildedRoseKata
 {
     public class Item
     {

@@ -1,5 +1,4 @@
-﻿
-using GildedRoseKata;
+﻿using GildedRoseKata;
 
 using System;
 using System.IO;
