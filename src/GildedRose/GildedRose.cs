@@ -75,10 +75,11 @@ public class GildedRose(IList<Item> Items)
                     {
                         if (item.Name == "Sulfuras, Hand of Ragnaros")
                         {
-                            return;
                         }
-
-                        item.Quality -= 1;
+                        else
+                        {
+                            item.Quality -= 1;
+                        }
                     }
                 }
             }
