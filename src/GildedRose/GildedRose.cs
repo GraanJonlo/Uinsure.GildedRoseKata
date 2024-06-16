@@ -5,55 +5,53 @@ namespace GildedRoseKata;
 
 public class LegacyItemWrapper(Item item)
 {
-    private Item Item { get; } = item;
-
     public void UpdateItem()
     {
-        if (Item.Name == "Aged Brie")
+        if (item.Name == "Aged Brie")
         {
             IncreaseQuality();
 
-            Item.SellIn -= 1;
+            item.SellIn -= 1;
 
-            if (Item.SellIn < 0)
+            if (item.SellIn < 0)
             {
                 IncreaseQuality();
             }
         }
-        else if (Item.Name == "Backstage passes to a TAFKAL80ETC concert")
+        else if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
         {
-            if (Item.Quality < 50)
+            if (item.Quality < 50)
             {
-                Item.Quality += 1;
+                item.Quality += 1;
 
-                if (Item.SellIn < 11)
+                if (item.SellIn < 11)
                 {
                     IncreaseQuality();
                 }
 
-                if (Item.SellIn < 6)
+                if (item.SellIn < 6)
                 {
                     IncreaseQuality();
                 }
             }
 
-            Item.SellIn -= 1;
+            item.SellIn -= 1;
 
-            if (Item.SellIn < 0)
+            if (item.SellIn < 0)
             {
-                Item.Quality = 0;
+                item.Quality = 0;
             }
         }
-        else if (Item.Name == "Sulfuras, Hand of Ragnaros")
+        else if (item.Name == "Sulfuras, Hand of Ragnaros")
         {
         }
         else
         {
             DecreaseQuality();
 
-            Item.SellIn -= 1;
+            item.SellIn -= 1;
 
-            if (Item.SellIn < 0)
+            if (item.SellIn < 0)
             {
                 DecreaseQuality();
             }
@@ -62,17 +60,17 @@ public class LegacyItemWrapper(Item item)
 
     private void DecreaseQuality()
     {
-        if (Item.Quality > 0)
+        if (item.Quality > 0)
         {
-            Item.Quality -= 1;
+            item.Quality -= 1;
         }
     }
 
     private void IncreaseQuality()
     {
-        if (Item.Quality < 50)
+        if (item.Quality < 50)
         {
-            Item.Quality += 1;
+            item.Quality += 1;
         }
     }
 }
