@@ -55,20 +55,22 @@ public class GildedRose(IList<Item> Items)
         }
         else
         {
-            if (item.Quality > 0)
-            {
-                item.Quality -= 1;
-            }
+            DecreaseQuality(item);
 
             item.SellIn -= 1;
 
             if (item.SellIn < 0)
             {
-                if (item.Quality > 0)
-                {
-                    item.Quality -= 1;
-                }
+                DecreaseQuality(item);
             }
+        }
+    }
+
+    private static void DecreaseQuality(Item item)
+    {
+        if (item.Quality > 0)
+        {
+            item.Quality -= 1;
         }
     }
 
