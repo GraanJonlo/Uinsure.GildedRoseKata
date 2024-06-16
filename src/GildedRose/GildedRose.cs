@@ -5,7 +5,7 @@ namespace GildedRoseKata;
 
 public class LegacyItemWrapper(Item item)
 {
-    public Item Item { get; } = item;
+    private Item Item { get; } = item;
 
     public void UpdateItem()
     {
@@ -60,7 +60,7 @@ public class LegacyItemWrapper(Item item)
         }
     }
 
-    public void DecreaseQuality()
+    private void DecreaseQuality()
     {
         if (Item.Quality > 0)
         {
@@ -68,7 +68,7 @@ public class LegacyItemWrapper(Item item)
         }
     }
 
-    public void IncreaseQuality()
+    private void IncreaseQuality()
     {
         if (Item.Quality < 50)
         {
