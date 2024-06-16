@@ -3,14 +3,8 @@
 // ReSharper disable once CheckNamespace
 namespace GildedRoseKata;
 
-public class GildedRose
+public class GildedRose(IList<Item> Items)
 {
-    IList<Item> Items;
-    public GildedRose(IList<Item> Items)
-    {
-        this.Items = Items;
-    }
-
     public void UpdateQuality()
     {
         for (var i = 0; i < Items.Count; i++)
